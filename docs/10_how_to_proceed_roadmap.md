@@ -302,11 +302,11 @@ Step 7. データ設計書を作る
 
 ⸻
 
-Step 8. 情報設計書を作る
+Step 8. 情報設計書を作る（完了）
 
 対象文書:
 
-* 13_information_architecture.md 相当
+* 14_information_architecture.md（作成済み。13 は検証レポートで使用済みのため採番をずらした）
 
 前提:
 
