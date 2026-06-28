@@ -508,6 +508,6 @@ Step 10. MVP実装に着手する
 
 次のアクション
 
-6. Notion 上に post_template.md 準拠のDBを構築する
-7. 仮投稿10〜20本を実施する
-8. 仮投稿の結果を 06_taxonomy_design.md と 12_data_model.md（新規）に反映する
+1. Notion 上に post_template.md 準拠のDBを構築する
+2. 仮投稿10〜20本を実施する
+3. 仮投稿の結果を 06_taxonomy_design.md と 12_data_model.md（新規）に反映する
