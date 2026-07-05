@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "akitakata-note",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-03-25",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  "observability": {
+    "enabled": true
+  }
+  // 以降のステップで追加予定のバインディング:
+  //  - D1（コンテンツDB, ADR-0002）:      "d1_databases": [{ "binding": "DB", ... }]
+  //  - R2（画像 originals/derivatives, ADR-0003）: "r2_buckets": [ ... ]
+  //  - secrets（Claude APIキー等, ADR-0005）は wrangler secret で管理（このファイルには置かない）
+}

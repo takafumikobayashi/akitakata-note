@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/*
+  あきたかたノート — 静かなギャラリー × ローカルフィールドノート
+  写真主役・余白重視・派手さを避けた静かな洗練（02_design_principles.md）
+*/
+@theme {
+  /* フォント: 見出し Zen Kaku Gothic New / 本文 Noto Sans JP（プロジェクト方針） */
+  --font-sans: var(--font-noto-sans-jp), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-zen-kaku), var(--font-noto-sans-jp), sans-serif;
+
+  /* 静かな配色: 生成りに近い背景 × 墨のテキスト。行政公式らしさを避ける（05） */
+  --color-paper: #faf8f4;
+  --color-ink: #1f1d1a;
+  --color-muted: #6b6459;
+  --color-line: #e7e2d9;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}

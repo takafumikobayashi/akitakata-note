@@ -39,6 +39,7 @@ pnpm-debug.log*
 /build/
 /out/
 /.next/
+/.open-next/
 /.astro/
 /.cache/
 /.parcel-cache/
@@ -106,3 +107,6 @@ desktop.ini
 *.pem
 *.key
 *.cert
+
+# デザイン確認用のデモ画像（GPS付き原本。コミットしない。本番はR2派生）
+/public/hero/
