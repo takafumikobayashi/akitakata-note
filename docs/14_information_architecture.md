@@ -79,7 +79,7 @@
 
 slug の責務はデータモデル側に持つ: Post / Place は slug フィールド、Theme / Season はクローズド語彙の各値に対応する安定 slug（`12_data_model.md §4-1 / §4-2 / §4-3 / §4-4`）。slug は内部ID・表示名と分離し、表示名を変えてもURLを保つ。
 
-将来の英語固定ページは `/en/about` のようなロケールベースへ拡張可能にする（`07 §9-4`、本書 §7）。日本語URLの是非（例: `/theme/移動・行き方` か `/theme/mobility` か）は技術設計（Step 9 ADR）で確定する（`12 §8`）。
+将来の英語固定ページは `/en/about` のようなロケールベースへ拡張可能にする（`07 §9-4`、本書 §7）。slug 表記は **ADR-0006 で ASCII に確定**（クローズド語彙は固定の英語 slug、Post/Place はローマ字翻字）。例: `/theme/mobility`（移動・行き方）、`/season/spring`（春）。%エンコードを避け URL の安定性・可搬性を確保する。
 
 ⸻
 
@@ -253,4 +253,4 @@ Post と Place の分離を活かし、同じ場所の異なる時期・テー�
 * `08_photo_location_policy.md`: 地図表示・公開前チェックUIの安全要件。
 * `12_data_model.md`: 各画面が読む/書くエンティティ、公開ゲートの構造。
 * `11_content_operations.md`: 投稿・再分類・公開前チェックの運用手順。
-* 技術選定メモ（Step 9 ADR）: フレームワーク・地図API・画像配信・日本語URLの是非を確定し、本IAを実装に落とす。
+* 技術選定メモ（`15_adr/` 0001〜0006・確定済み）: フレームワーク（Next.js）・地図（MapLibre＋PMTiles）・画像（R2＋Image Transformations）・slug表記（ASCII、ADR-0006）を確定。本IAを実装に落とす基盤。

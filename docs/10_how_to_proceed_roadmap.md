@@ -61,22 +61,24 @@
 9. 09_risk_ai_policy.md
 10. 10_how_to_proceed_roadmap.md
 11. 11_content_operations.md
+12. 12_data_model.md（データ設計書）
+13. 13_trial_verification_report.md（仮投稿検証レポート）
+14. 14_information_architecture.md（情報設計書）
+15. 15_adr/（技術選定メモ 0001〜0006）
 
 確定済みの実務論点
 
 * 採用ドメイン: akitaka-note.jp（05_public_private_policy.md §5-2）
 * 表示名: コバッチ（05_public_private_policy.md §4-4）
 * 肩書き: サイト上に一切表示しない（05_public_private_policy.md §2-3）
-* 仮投稿環境: Notion 無料プラン（本書 §5 Step 4）
-* 仮投稿フォーマット: docs/templates/post_template.md
+* 仮投稿環境: Notion 無料プラン（本書 §5 Step 4）／仮投稿20本を実施・検証済み（13_trial_verification_report.md）
+* 主要技術スタック: 15_adr/ で確定（Next.js ＋ Cloudflare/R2 ＋ D1 ＋ Drizzle、フルカスタム管理UI、MapLibre、Claude API 等。要約は 04 §5・15_adr/README.md）
+
+現在地: 設計・検証・技術選定は完了（Step 5〜9）。次は Phase 3 = Step 10「MVP実装」。
 
 これからの主作業
 
-* データ設計書
-* 情報設計書
-* 技術選定メモ（ADR）
-* 仮投稿検証
-* 実装着手
+* MVP実装（Step 10。着手順序は 04_technical_overview.md §9、直近アクションは本書 §11）
 
 ⸻
 
@@ -208,8 +210,8 @@ Step 4. 仮投稿の実行環境を決める（完了）
 
 留意事項:
 
-* 本番CMSは Step 9 ADR で別途決定する。Notion を本番に転用するかはここでは判断しない
-* Notion の画像URLは期限切れする仕様があるため、本番移行時には画像の再ホストが必要
+* 本番CMSは ADR-0002 でフルカスタム（Cloudflare D1 ＋ Drizzle ＋ 自作管理UI）に確定済み。Notion は仮投稿専用で本番には転用しない
+* Notion の画像URLは期限切れする仕様があるため、本番移行時には画像の再ホストが必要（R2 へ。`15_adr/0003`）
 
 成果:
 
@@ -506,9 +508,19 @@ Step 10. MVP実装に着手する
 3. ドメイン候補を整理し、優先順位を決めて確保する（確定: akitaka-note.jp）
 4. 仮投稿に使う最小フォーマットを1枚にまとめる（完了: docs/templates/post_template.md）
 5. 仮投稿環境を決める（完了: Notion 無料プラン）
+6. Notion 上に post_template.md 準拠のDBを構築し、仮投稿20本（trial-001〜020）を実施する（Step 5 完了）
+7. 仮投稿の結果を 06_taxonomy_design.md に反映し、写真安全確認を実施、検証レポートを 13_trial_verification_report.md にまとめる（Step 6 完了）
+8. データ設計書 12_data_model.md を作成する（Step 7 完了）
+9. 情報設計書 14_information_architecture.md を作成する（Step 8 完了）
+10. 技術選定メモ 15_adr/（0001〜0006）で主要スタックを採用確定する（Step 9 完了）
 
-次のアクション
+次のアクション（Step 10: MVP実装に着手）
 
-1. Notion 上に post_template.md 準拠のDBを構築する
-2. 仮投稿10〜20本を実施する
-3. 仮投稿の結果を 06_taxonomy_design.md と 12_data_model.md（新規）に反映する
+着手順序は 04_technical_overview.md §9 を正とする。直近は以下から始める。
+
+1. 初期スキャフォールド（Next.js App Router ＋ Tailwind/shadcn ＋ Cloudflare/Wrangler ＋ secrets）
+2. データ層: Drizzle で 12_data_model.md のエンティティを Cloudflare D1 にスキーマ化（slug は 15_adr/0006 の確定値）
+3. 画像パイプライン: R2 二層 ＋ EXIF除去（再エンコード）＋ 自動検査で exif_gps_ok を立てる
+4. 管理UI ＋ 公開ゲート: 投稿編集・公開前チェックUI（SafetyReview / PublishChecklist）を実装し、全項目充足まで公開不可にする
+
+続いて AI補助・公開側UI・地図・配信/運用（trial-posts のデータ移行と画像再ホスト）へ広げる。
