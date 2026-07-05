@@ -11,6 +11,11 @@
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply akitakata-note --local",
+    "db:migrate:remote": "wrangler d1 migrations apply akitakata-note --remote",
+    "db:seed:local": "wrangler d1 execute akitakata-note --local --file drizzle/seed.sql",
+    "db:seed:remote": "wrangler d1 execute akitakata-note --remote --file drizzle/seed.sql",
     "lint:md": "markdownlint \"README.md\" \"docs/**/*.md\"",
     "lint:md:fix": "markdownlint --fix \"README.md\" \"docs/**/*.md\""
   },
@@ -20,6 +25,7 @@
     "@types/node": "^26.1.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "drizzle-kit": "^0.31.10",
     "markdownlint-cli": "^0.49.0",
     "postcss": "^8.5.16",
     "tailwindcss": "^4.3.2",
@@ -27,6 +33,7 @@
     "wrangler": "^4.107.0"
   },
   "dependencies": {
+    "drizzle-orm": "^0.45.2",
     "next": "^16.2.10",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"

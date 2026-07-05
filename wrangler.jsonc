@@ -10,9 +10,18 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  // コンテンツDB（ADR-0002）。database_id は `wrangler d1 create akitakata-note`
+  // 実行後に発行される値へ差し替える（未作成のうちはローカル --local のみ動作）。
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "akitakata-note",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "drizzle"
+    }
+  ]
   // 以降のステップで追加予定のバインディング:
-  //  - D1（コンテンツDB, ADR-0002）:      "d1_databases": [{ "binding": "DB", ... }]
   //  - R2（画像 originals/derivatives, ADR-0003）: "r2_buckets": [ ... ]
   //  - secrets（Claude APIキー等, ADR-0005）は wrangler secret で管理（このファイルには置かない）
 }
